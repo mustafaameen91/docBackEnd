@@ -5,7 +5,7 @@ const MasterType = function (masterType) {
 };
 
 MasterType.create = (newMasterType, result) => {
-   sql.query("INSERT INTO masterType SET ?", newMasterType, (err, res) => {
+   sql.query("INSERT INTO mastertype SET ?", newMasterType, (err, res) => {
       if (err) {
          console.log("error: ", err);
          result(err, null);
@@ -22,7 +22,7 @@ MasterType.create = (newMasterType, result) => {
 
 MasterType.findById = (typeId, result) => {
    sql.query(
-      `SELECT * FROM masterType WHERE idType = ${typeId}`,
+      `SELECT * FROM mastertype WHERE idType = ${typeId}`,
       (err, res) => {
          if (err) {
             console.log("error: ", err);
@@ -42,7 +42,7 @@ MasterType.findById = (typeId, result) => {
 };
 
 MasterType.getAll = (result) => {
-   sql.query("SELECT * FROM masterType", (err, res) => {
+   sql.query("SELECT * FROM mastertype", (err, res) => {
       if (err) {
          console.log("error: ", err);
          result(null, err);
@@ -56,7 +56,7 @@ MasterType.getAll = (result) => {
 
 MasterType.updateById = (id, masterType, result) => {
    sql.query(
-      "UPDATE masterType SET ?  WHERE idType = ?",
+      "UPDATE mastertype SET ?  WHERE idType = ?",
       [masterType, id],
       (err, res) => {
          if (err) {
@@ -77,7 +77,7 @@ MasterType.updateById = (id, masterType, result) => {
 };
 
 MasterType.remove = (id, result) => {
-   sql.query("DELETE FROM masterType WHERE idType = ?", id, (err, res) => {
+   sql.query("DELETE FROM mastertype WHERE idType = ?", id, (err, res) => {
       if (err) {
          console.log("error: ", err);
          result(null, err);
@@ -95,7 +95,7 @@ MasterType.remove = (id, result) => {
 };
 
 MasterType.removeAll = (result) => {
-   sql.query("DELETE FROM masterType", (err, res) => {
+   sql.query("DELETE FROM mastertype", (err, res) => {
       if (err) {
          console.log("error: ", err);
          result(null, err);

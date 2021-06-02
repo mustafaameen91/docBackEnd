@@ -18,7 +18,7 @@ const GraduationDocument = function (graduationDocument) {
 
 GraduationDocument.create = (newGraduationDocument, result) => {
    sql.query(
-      "INSERT INTO graduationDocument SET ?",
+      "INSERT INTO graduationdocument SET ?",
       newGraduationDocument,
       (err, res) => {
          if (err) {
@@ -38,7 +38,7 @@ GraduationDocument.create = (newGraduationDocument, result) => {
 
 GraduationDocument.findById = (graduationDocumentId, result) => {
    sql.query(
-      `SELECT * FROM graduationDocument WHERE idGraduationDocument = ${graduationDocumentId}`,
+      `SELECT * FROM graduationdocument WHERE idGraduationDocument = ${graduationDocumentId}`,
       (err, res) => {
          if (err) {
             console.log("error: ", err);
@@ -58,7 +58,7 @@ GraduationDocument.findById = (graduationDocumentId, result) => {
 };
 
 GraduationDocument.getAll = (result) => {
-   sql.query("SELECT * FROM graduationDocument", (err, res) => {
+   sql.query("SELECT * FROM graduationdocument", (err, res) => {
       if (err) {
          console.log("error: ", err);
          result(null, err);
@@ -72,7 +72,7 @@ GraduationDocument.getAll = (result) => {
 
 GraduationDocument.updateById = (id, graduationDocument, result) => {
    sql.query(
-      "UPDATE graduationDocument SET ?  WHERE idGraduationDocument = ?",
+      "UPDATE graduationdocument SET ?  WHERE idGraduationDocument = ?",
       [graduationDocument, id],
       (err, res) => {
          if (err) {
@@ -97,7 +97,7 @@ GraduationDocument.updateById = (id, graduationDocument, result) => {
 
 GraduationDocument.remove = (id, result) => {
    sql.query(
-      "DELETE FROM graduationDocument WHERE idGraduationDocument = ?",
+      "DELETE FROM graduationdocument WHERE idGraduationDocument = ?",
       id,
       (err, res) => {
          if (err) {
@@ -118,7 +118,7 @@ GraduationDocument.remove = (id, result) => {
 };
 
 GraduationDocument.removeAll = (result) => {
-   sql.query("DELETE FROM graduationDocument", (err, res) => {
+   sql.query("DELETE FROM graduationdocument", (err, res) => {
       if (err) {
          console.log("error: ", err);
          result(null, err);

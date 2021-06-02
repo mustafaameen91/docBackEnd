@@ -6,7 +6,7 @@ const MasterClass = function (masterClass) {
 };
 
 MasterClass.create = (masterClass, result) => {
-   sql.query("INSERT INTO masterClass SET ?", masterClass, (err, res) => {
+   sql.query("INSERT INTO masterclass SET ?", masterClass, (err, res) => {
       if (err) {
          console.log("error: ", err);
          result(err, null);
@@ -23,7 +23,7 @@ MasterClass.create = (masterClass, result) => {
 
 MasterClass.findById = (masterClassId, result) => {
    sql.query(
-      `SELECT * FROM masterClass WHERE idMasterClass = ${masterClassId}`,
+      `SELECT * FROM masterclass WHERE idMasterClass = ${masterClassId}`,
       (err, res) => {
          if (err) {
             console.log("error: ", err);
@@ -44,7 +44,7 @@ MasterClass.findById = (masterClassId, result) => {
 
 MasterClass.findByClassName = (className, masterId, result) => {
    sql.query(
-      `SELECT * FROM masterClass WHERE className = '${className}' AND masterId = ${masterId}`,
+      `SELECT * FROM masterclass WHERE className = '${className}' AND masterId = ${masterId}`,
       (err, res) => {
          if (err) {
             console.log("error: ", err);
@@ -64,7 +64,7 @@ MasterClass.findByClassName = (className, masterId, result) => {
 };
 
 MasterClass.getAll = (result) => {
-   sql.query("SELECT * FROM masterClass", (err, res) => {
+   sql.query("SELECT * FROM masterclass", (err, res) => {
       if (err) {
          console.log("error: ", err);
          result(null, err);
@@ -78,7 +78,7 @@ MasterClass.getAll = (result) => {
 
 MasterClass.updateById = (id, masterClass, result) => {
    sql.query(
-      "UPDATE masterClass SET ?  WHERE idMasterClass = ?",
+      "UPDATE masterclass SET ?  WHERE idMasterClass = ?",
       [masterClass, id],
       (err, res) => {
          if (err) {
@@ -100,7 +100,7 @@ MasterClass.updateById = (id, masterClass, result) => {
 
 MasterClass.remove = (id, result) => {
    sql.query(
-      "DELETE FROM masterClass WHERE idMasterClass = ?",
+      "DELETE FROM masterclass WHERE idMasterClass = ?",
       id,
       (err, res) => {
          if (err) {
@@ -121,7 +121,7 @@ MasterClass.remove = (id, result) => {
 };
 
 MasterClass.removeAll = (result) => {
-   sql.query("DELETE FROM masterClass", (err, res) => {
+   sql.query("DELETE FROM masterclass", (err, res) => {
       if (err) {
          console.log("error: ", err);
          result(null, err);

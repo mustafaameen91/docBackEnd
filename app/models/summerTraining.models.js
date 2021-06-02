@@ -9,7 +9,7 @@ const SummerTraining = function (summerTraining) {
 
 SummerTraining.create = (newSummerTraining, result) => {
    sql.query(
-      "INSERT INTO summerTraining SET ?",
+      "INSERT INTO summertraining SET ?",
       newSummerTraining,
       (err, res) => {
          if (err) {
@@ -29,7 +29,7 @@ SummerTraining.create = (newSummerTraining, result) => {
 
 SummerTraining.createMultiTraining = (summer, result) => {
    sql.query(
-      "INSERT INTO summerTraining (studentName , collageNumber , studyType , sectionId) VALUES ? ",
+      "INSERT INTO summertraining (studentName , collageNumber , studyType , sectionId) VALUES ? ",
       [
          summer.map((summer) => [
             summer.name,
@@ -56,7 +56,7 @@ SummerTraining.createMultiTraining = (summer, result) => {
 
 SummerTraining.findById = (summerTrainingId, result) => {
    sql.query(
-      `SELECT * FROM summerTraining WHERE idSummerTraining = ${summerTrainingId}`,
+      `SELECT * FROM summertraining WHERE idSummerTraining = ${summerTrainingId}`,
       (err, res) => {
          if (err) {
             console.log("error: ", err);
@@ -76,7 +76,7 @@ SummerTraining.findById = (summerTrainingId, result) => {
 };
 
 SummerTraining.getAll = (result) => {
-   sql.query("SELECT * FROM summerTraining", (err, res) => {
+   sql.query("SELECT * FROM summertraining", (err, res) => {
       if (err) {
          console.log("error: ", err);
          result(null, err);
@@ -91,7 +91,7 @@ SummerTraining.getAll = (result) => {
 SummerTraining.getAllBySectionId = (sectionId, result) => {
    console.log(sectionId);
    sql.query(
-      `SELECT * FROM summerTraining WHERE sectionId = '${sectionId}'`,
+      `SELECT * FROM summertraining WHERE sectionId = '${sectionId}'`,
       (err, res) => {
          if (err) {
             console.log("error: ", err);
@@ -108,7 +108,7 @@ SummerTraining.getAllBySectionId = (sectionId, result) => {
 SummerTraining.getAllBySectionIdAndStudy = (sectionId, studyType, result) => {
    console.log(sectionId);
    sql.query(
-      `SELECT * FROM summerTraining WHERE sectionId = '${sectionId}' AND studyType = '${studyType}'`,
+      `SELECT * FROM summertraining WHERE sectionId = '${sectionId}' AND studyType = '${studyType}'`,
       (err, res) => {
          if (err) {
             console.log("error: ", err);
@@ -124,7 +124,7 @@ SummerTraining.getAllBySectionIdAndStudy = (sectionId, studyType, result) => {
 
 SummerTraining.updateById = (id, summerTraining, result) => {
    sql.query(
-      "UPDATE summerTraining SET ?  WHERE idSummerTraining = ?",
+      "UPDATE summertraining SET ?  WHERE idSummerTraining = ?",
       [summerTraining, id],
       (err, res) => {
          if (err) {
@@ -146,7 +146,7 @@ SummerTraining.updateById = (id, summerTraining, result) => {
 
 SummerTraining.remove = (id, result) => {
    sql.query(
-      "DELETE FROM summerTraining WHERE idSummerTraining = ?",
+      "DELETE FROM summertraining WHERE idSummerTraining = ?",
       id,
       (err, res) => {
          if (err) {
@@ -167,7 +167,7 @@ SummerTraining.remove = (id, result) => {
 };
 
 SummerTraining.removeAll = (result) => {
-   sql.query("DELETE FROM summerTraining", (err, res) => {
+   sql.query("DELETE FROM summertraining", (err, res) => {
       if (err) {
          console.log("error: ", err);
          result(null, err);

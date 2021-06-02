@@ -11,7 +11,7 @@ const FinalDegree = function (finalDegree) {
 };
 
 FinalDegree.create = (newFinalDegree, result) => {
-   sql.query("INSERT INTO finalDegree SET ?", newFinalDegree, (err, res) => {
+   sql.query("INSERT INTO finaldegree SET ?", newFinalDegree, (err, res) => {
       if (err) {
          console.log("error: ", err);
          result(err, null);
@@ -28,7 +28,7 @@ FinalDegree.create = (newFinalDegree, result) => {
 
 FinalDegree.createMultiDegree = (degrees, result) => {
    sql.query(
-      "INSERT INTO finalDegree (collageNumber , mark , numberWriting , lessonId , phase , rule , studentName) VALUES ? ",
+      "INSERT INTO finaldegree (collageNumber , mark , numberWriting , lessonId , phase , rule , studentName) VALUES ? ",
       [
          degrees.map((degree) => [
             degree.collageNumber,
@@ -58,7 +58,7 @@ FinalDegree.createMultiDegree = (degrees, result) => {
 
 FinalDegree.findById = (degreeId, result) => {
    sql.query(
-      `SELECT * FROM finalDegree WHERE idDegree = ${degreeId}`,
+      `SELECT * FROM finaldegree WHERE idDegree = ${degreeId}`,
       (err, res) => {
          if (err) {
             console.log("error: ", err);
@@ -79,7 +79,7 @@ FinalDegree.findById = (degreeId, result) => {
 
 FinalDegree.findAverageForStudents = (sectionId, level, result) => {
    sql.query(
-      `SELECT * FROM finalDegree JOIN lesson JOIN master ON finalDegree.lessonId = lesson.idLesson AND master.idMaster = lesson.masterId WHERE sectionId = ${sectionId} AND master.level = ${level}`,
+      `SELECT * FROM finaldegree JOIN lesson JOIN master ON finaldegree.lessonId = lesson.idLesson AND master.idMaster = lesson.masterId WHERE sectionId = ${sectionId} AND master.level = ${level}`,
       (err, res) => {
          if (err) {
             console.log("error: ", err);
@@ -106,7 +106,7 @@ FinalDegree.findAverageForStudent = (
    result
 ) => {
    sql.query(
-      `SELECT * , IF(master.masterTypeId = 1 , (SELECT course FROM coursesplit WHERE lesson.idLesson = coursesplit.lessonId AND master.idMaster = coursesplit.masterId) , 0 ) AS course FROM finalDegree JOIN lesson JOIN master ON finalDegree.lessonId = lesson.idLesson AND master.idMaster = lesson.masterId WHERE sectionId = ${sectionId} AND master.level = ${level} AND collageNumber LIKE '%${collageNumber}' GROUP BY lessonId.enName`,
+      `SELECT * , IF(master.masterTypeId = 1 , (SELECT course FROM coursesplit WHERE lesson.idLesson = coursesplit.lessonId AND master.idMaster = coursesplit.masterId) , 0 ) AS course FROM finaldegree JOIN lesson JOIN master ON finaldegree.lessonId = lesson.idLesson AND master.idMaster = lesson.masterId WHERE sectionId = ${sectionId} AND master.level = ${level} AND collageNumber LIKE '%${collageNumber}' GROUP BY lessonId.enName`,
       (err, res) => {
          if (err) {
             console.log("error: ", err);
@@ -126,7 +126,7 @@ FinalDegree.findAverageForStudent = (
 };
 
 FinalDegree.getAll = (result) => {
-   sql.query("SELECT * FROM finalDegree", (err, res) => {
+   sql.query("SELECT * FROM finaldegree", (err, res) => {
       if (err) {
          console.log("error: ", err);
          result(null, err);
@@ -140,7 +140,7 @@ FinalDegree.getAll = (result) => {
 
 FinalDegree.updateById = (id, finalDegree, result) => {
    sql.query(
-      "UPDATE finalDegree SET ?  WHERE idDegree = ?",
+      "UPDATE finaldegree SET ?  WHERE idDegree = ?",
       [finalDegree, id],
       (err, res) => {
          if (err) {
@@ -161,7 +161,7 @@ FinalDegree.updateById = (id, finalDegree, result) => {
 };
 
 FinalDegree.remove = (id, result) => {
-   sql.query("DELETE FROM finalDegree WHERE idDegree = ?", id, (err, res) => {
+   sql.query("DELETE FROM finaldegree WHERE idDegree = ?", id, (err, res) => {
       if (err) {
          console.log("error: ", err);
          result(null, err);
@@ -179,7 +179,7 @@ FinalDegree.remove = (id, result) => {
 };
 
 FinalDegree.removeAll = (result) => {
-   sql.query("DELETE FROM finalDegree", (err, res) => {
+   sql.query("DELETE FROM finaldegree", (err, res) => {
       if (err) {
          console.log("error: ", err);
          result(null, err);

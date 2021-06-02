@@ -7,7 +7,7 @@ const CourseSplit = function (courseSplit) {
 };
 
 CourseSplit.create = (newCourseSplit, result) => {
-   sql.query("INSERT INTO courseSplit SET ?", newCourseSplit, (err, res) => {
+   sql.query("INSERT INTO coursesplit SET ?", newCourseSplit, (err, res) => {
       if (err) {
          console.log("error: ", err);
          result(err, null);
@@ -24,7 +24,7 @@ CourseSplit.create = (newCourseSplit, result) => {
 
 CourseSplit.createMultiCourseLessons = (lessons, masterId, course, result) => {
    sql.query(
-      "INSERT INTO courseSplit (lessonId , masterId ,course) VALUES ?",
+      "INSERT INTO coursesplit (lessonId , masterId ,course) VALUES ?",
       [lessons.map((lesson) => [lesson.idLesson, masterId, course])],
       (err, res) => {
          if (err) {
@@ -41,7 +41,7 @@ CourseSplit.createMultiCourseLessons = (lessons, masterId, course, result) => {
 
 CourseSplit.findById = (courseSplitId, result) => {
    sql.query(
-      `SELECT * FROM courseSplit WHERE idCourseSplit = ${courseSplitId}`,
+      `SELECT * FROM coursesplit WHERE idCourseSplit = ${courseSplitId}`,
       (err, res) => {
          if (err) {
             console.log("error: ", err);
@@ -62,7 +62,7 @@ CourseSplit.findById = (courseSplitId, result) => {
 
 CourseSplit.getByMasterId = (masterId, result) => {
    sql.query(
-      `SELECT * FROM courseSplit JOIN lesson ON lesson.idLesson = courseSplit.lessonId WHERE courseSplit.masterId = ${masterId}`,
+      `SELECT * FROM coursesplit JOIN lesson ON lesson.idLesson = courseSplit.lessonId WHERE courseSplit.masterId = ${masterId}`,
       (err, res) => {
          if (err) {
             console.log("error: ", err);
@@ -82,7 +82,7 @@ CourseSplit.getByMasterId = (masterId, result) => {
 };
 
 CourseSplit.getAll = (result) => {
-   sql.query("SELECT * FROM courseSplit", (err, res) => {
+   sql.query("SELECT * FROM coursesplit", (err, res) => {
       if (err) {
          console.log("error: ", err);
          result(null, err);
@@ -96,7 +96,7 @@ CourseSplit.getAll = (result) => {
 
 CourseSplit.updateById = (id, courseSplit, result) => {
    sql.query(
-      "UPDATE courseSplit SET ?  WHERE idCourseSplit = ?",
+      "UPDATE coursesplit SET ?  WHERE idCourseSplit = ?",
       [courseSplit, id],
       (err, res) => {
          if (err) {
@@ -118,7 +118,7 @@ CourseSplit.updateById = (id, courseSplit, result) => {
 
 CourseSplit.remove = (id, result) => {
    sql.query(
-      "DELETE FROM courseSplit WHERE idCourseSplit = ?",
+      "DELETE FROM coursesplit WHERE idCourseSplit = ?",
       id,
       (err, res) => {
          if (err) {
@@ -139,7 +139,7 @@ CourseSplit.remove = (id, result) => {
 };
 
 CourseSplit.removeAll = (result) => {
-   sql.query("DELETE FROM courseSplit", (err, res) => {
+   sql.query("DELETE FROM coursesplit", (err, res) => {
       if (err) {
          console.log("error: ", err);
          result(null, err);

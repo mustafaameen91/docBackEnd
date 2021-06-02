@@ -12,7 +12,7 @@ const RegisterDocument = function (registerDocument) {
 
 RegisterDocument.create = (newRegisterDocument, result) => {
    sql.query(
-      "INSERT INTO registerDocument SET ?",
+      "INSERT INTO registerdocument SET ?",
       newRegisterDocument,
       (err, res) => {
          if (err) {
@@ -32,7 +32,7 @@ RegisterDocument.create = (newRegisterDocument, result) => {
 
 RegisterDocument.findById = (registerDocumentId, result) => {
    sql.query(
-      `SELECT * FROM registerDocument WHERE idRegisterDocument = ${registerDocumentId}`,
+      `SELECT * FROM registerdocument WHERE idRegisterDocument = ${registerDocumentId}`,
       (err, res) => {
          if (err) {
             console.log("error: ", err);
@@ -52,7 +52,7 @@ RegisterDocument.findById = (registerDocumentId, result) => {
 };
 
 RegisterDocument.getAll = (result) => {
-   sql.query("SELECT * FROM registerDocument", (err, res) => {
+   sql.query("SELECT * FROM registerdocument", (err, res) => {
       if (err) {
          console.log("error: ", err);
          result(null, err);
@@ -66,7 +66,7 @@ RegisterDocument.getAll = (result) => {
 
 RegisterDocument.getBySectionId = (sectionId, result) => {
    sql.query(
-      `SELECT * FROM registerDocument WHERE sectionId = ${sectionId}`,
+      `SELECT * FROM registerdocument WHERE sectionId = ${sectionId}`,
       (err, res) => {
          if (err) {
             console.log("error: ", err);
@@ -87,7 +87,7 @@ RegisterDocument.getBySectionId = (sectionId, result) => {
 
 RegisterDocument.updateById = (id, registerDocument, result) => {
    sql.query(
-      "UPDATE registerDocument SET ?  WHERE idRegisterDocument = ?",
+      "UPDATE registerdocument SET ?  WHERE idRegisterDocument = ?",
       [registerDocument, id],
       (err, res) => {
          if (err) {
@@ -112,7 +112,7 @@ RegisterDocument.updateById = (id, registerDocument, result) => {
 
 RegisterDocument.remove = (id, result) => {
    sql.query(
-      "DELETE FROM registerDocument WHERE idRegisterDocument = ?",
+      "DELETE FROM registerdocument WHERE idRegisterDocument = ?",
       id,
       (err, res) => {
          if (err) {
@@ -133,7 +133,7 @@ RegisterDocument.remove = (id, result) => {
 };
 
 RegisterDocument.removeAll = (result) => {
-   sql.query("DELETE FROM registerDocument", (err, res) => {
+   sql.query("DELETE FROM registerdocument", (err, res) => {
       if (err) {
          console.log("error: ", err);
          result(null, err);

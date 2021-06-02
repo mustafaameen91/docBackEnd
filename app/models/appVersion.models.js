@@ -6,7 +6,7 @@ const AppVersion = function (appVersion) {
 };
 
 AppVersion.create = (newAppVersion, result) => {
-   sql.query("INSERT INTO appVersion SET ?", newAppVersion, (err, res) => {
+   sql.query("INSERT INTO appversion SET ?", newAppVersion, (err, res) => {
       if (err) {
          console.log("error: ", err);
          result(err, null);
@@ -23,7 +23,7 @@ AppVersion.create = (newAppVersion, result) => {
 
 AppVersion.findById = (appVersionId, result) => {
    sql.query(
-      `SELECT * FROM appVersion WHERE idAppVersion = ${appVersionId}`,
+      `SELECT * FROM appversion WHERE idAppVersion = ${appVersionId}`,
       (err, res) => {
          if (err) {
             console.log("error: ", err);
@@ -44,7 +44,7 @@ AppVersion.findById = (appVersionId, result) => {
 
 AppVersion.findByAppName = (appName, result) => {
    sql.query(
-      `SELECT * FROM appVersion WHERE appName = '${appName}'`,
+      `SELECT * FROM appversion WHERE appName = '${appName}'`,
       (err, res) => {
          if (err) {
             console.log("error: ", err);
@@ -64,7 +64,7 @@ AppVersion.findByAppName = (appName, result) => {
 };
 
 AppVersion.getAll = (result) => {
-   sql.query("SELECT * FROM appVersion", (err, res) => {
+   sql.query("SELECT * FROM appversion", (err, res) => {
       if (err) {
          console.log("error: ", err);
          result(null, err);
@@ -78,7 +78,7 @@ AppVersion.getAll = (result) => {
 
 AppVersion.updateById = (id, appVersion, result) => {
    sql.query(
-      "UPDATE appVersion SET ?  WHERE idAppVersion = ?",
+      "UPDATE appversion SET ?  WHERE idAppVersion = ?",
       [appVersion, id],
       (err, res) => {
          if (err) {
@@ -100,7 +100,7 @@ AppVersion.updateById = (id, appVersion, result) => {
 
 AppVersion.remove = (id, result) => {
    sql.query(
-      "DELETE FROM appVersion WHERE idAppVersion = ?",
+      "DELETE FROM appversion WHERE idAppVersion = ?",
       id,
       (err, res) => {
          if (err) {
@@ -121,7 +121,7 @@ AppVersion.remove = (id, result) => {
 };
 
 AppVersion.removeAll = (result) => {
-   sql.query("DELETE FROM appVersion", (err, res) => {
+   sql.query("DELETE FROM appversion", (err, res) => {
       if (err) {
          console.log("error: ", err);
          result(null, err);

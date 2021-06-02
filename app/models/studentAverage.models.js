@@ -9,7 +9,7 @@ const StudentAverage = function (studentAverage) {
 
 StudentAverage.create = (newStudentAverage, result) => {
    sql.query(
-      "INSERT INTO studentAverage SET ?",
+      "INSERT INTO studentaverage SET ?",
       newStudentAverage,
       (err, res) => {
          if (err) {
@@ -29,7 +29,7 @@ StudentAverage.create = (newStudentAverage, result) => {
 
 StudentAverage.createMultiAverage = (averages, result) => {
    sql.query(
-      "INSERT INTO studentAverage (collageNumber , average , sectionId , studyType) VALUES ? ",
+      "INSERT INTO studentaverage (collageNumber , average , sectionId , studyType) VALUES ? ",
       [
          averages.map((degree) => [
             averages.collageNumber,
@@ -56,7 +56,7 @@ StudentAverage.createMultiAverage = (averages, result) => {
 
 StudentAverage.findBySectionId = (sectionId, result) => {
    sql.query(
-      `SELECT * FROM studentAverage WHERE sectionId = ${sectionId}`,
+      `SELECT * FROM studentaverage WHERE sectionId = ${sectionId}`,
       (err, res) => {
          if (err) {
             console.log("error: ", err);
@@ -77,7 +77,7 @@ StudentAverage.findBySectionId = (sectionId, result) => {
 
 StudentAverage.findById = (studentAverageId, result) => {
    sql.query(
-      `SELECT * FROM studentAverage WHERE idStudentAverage = ${studentAverageId}`,
+      `SELECT * FROM studentaverage WHERE idStudentAverage = ${studentAverageId}`,
       (err, res) => {
          if (err) {
             console.log("error: ", err);
@@ -97,7 +97,7 @@ StudentAverage.findById = (studentAverageId, result) => {
 };
 
 StudentAverage.getAll = (result) => {
-   sql.query("SELECT * FROM studentAverage", (err, res) => {
+   sql.query("SELECT * FROM studentaverage", (err, res) => {
       if (err) {
          console.log("error: ", err);
          result(err, null);
@@ -111,7 +111,7 @@ StudentAverage.getAll = (result) => {
 
 StudentAverage.updateById = (id, studentAverage, result) => {
    sql.query(
-      "UPDATE studentAverage SET ?  WHERE idStudentAverage = ?",
+      "UPDATE studentaverage SET ?  WHERE idStudentAverage = ?",
       [studentAverage, id],
       (err, res) => {
          if (err) {
@@ -133,7 +133,7 @@ StudentAverage.updateById = (id, studentAverage, result) => {
 
 StudentAverage.remove = (id, result) => {
    sql.query(
-      "DELETE FROM studentAverage WHERE idStudentAverage = ?",
+      "DELETE FROM studentaverage WHERE idStudentAverage = ?",
       id,
       (err, res) => {
          if (err) {
@@ -154,7 +154,7 @@ StudentAverage.remove = (id, result) => {
 };
 
 StudentAverage.removeAll = (result) => {
-   sql.query("DELETE FROM studentAverage", (err, res) => {
+   sql.query("DELETE FROM studentaverage", (err, res) => {
       if (err) {
          console.log("error: ", err);
          result(null, err);
