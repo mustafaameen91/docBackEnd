@@ -18,6 +18,7 @@ require("./app/routes/registerDocument.routes.js")(app);
 require("./app/routes/appVersion.routes.js")(app);
 require("./app/routes/summerTraining.routes.js")(app);
 require("./app/routes/courseSplit.routes.js")(app);
+require("./app/routes/graduationDocument.routes.js")(app);
 
 exports.directory = __dirname;
 
