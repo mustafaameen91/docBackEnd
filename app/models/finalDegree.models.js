@@ -106,7 +106,7 @@ FinalDegree.findAverageForStudent = (
    result
 ) => {
    sql.query(
-      `SELECT * , IF(master.masterTypeId = 1 , (SELECT course FROM coursesplit WHERE lesson.idLesson = coursesplit.lessonId AND master.idMaster = coursesplit.masterId) , 0 ) AS course FROM finaldegree JOIN lesson JOIN master ON finaldegree.lessonId = lesson.idLesson AND master.idMaster = lesson.masterId WHERE sectionId = ${sectionId} AND master.level = ${level} AND collageNumber LIKE '%${collageNumber}' GROUP BY lessonId.enName`,
+      `SELECT * , IF(master.masterTypeId = 1 , (SELECT course FROM coursesplit WHERE lesson.idLesson = coursesplit.lessonId AND master.idMaster = coursesplit.masterId) , 0 ) AS course FROM finaldegree JOIN lesson JOIN master ON finaldegree.lessonId = lesson.idLesson AND master.idMaster = lesson.masterId WHERE sectionId = ${sectionId} AND master.level = ${level} AND collageNumber LIKE '%${collageNumber}' GROUP BY lesson.enName`,
       (err, res) => {
          if (err) {
             console.log("error: ", err);
