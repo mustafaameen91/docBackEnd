@@ -36,6 +36,27 @@ GraduationDocument.create = (newGraduationDocument, result) => {
    );
 };
 
+GraduationDocument.getBySectionId = (sectionId, result) => {
+   sql.query(
+      `SELECT * FROM graduationdocument WHERE sectionId = ${sectionId}`,
+      (err, res) => {
+         if (err) {
+            console.log("error: ", err);
+            result(err, null);
+            return;
+         }
+
+         if (res.length) {
+            console.log("found graduationDocument: ", res);
+            result(null, res);
+            return;
+         }
+
+         result({ kind: "not_found" }, null);
+      }
+   );
+};
+
 GraduationDocument.findById = (graduationDocumentId, result) => {
    sql.query(
       `SELECT * FROM graduationdocument WHERE idGraduationDocument = ${graduationDocumentId}`,

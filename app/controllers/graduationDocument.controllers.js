@@ -46,6 +46,24 @@ exports.findAll = (req, res) => {
    });
 };
 
+exports.findBySectionId = (req, res) => {
+   GraduationDocument.getBySectionId(req.params.sectionId, (err, data) => {
+      if (err) {
+         if (err.kind === "not_found") {
+            res.status(404).send({
+               message: `Not found graduationDocument with sectionId ${req.params.sectionId}.`,
+            });
+         } else {
+            res.status(500).send({
+               message:
+                  "Error retrieving graduationDocument with sectionId " +
+                  req.params.sectionId,
+            });
+         }
+      } else res.send(data);
+   });
+};
+
 exports.findOne = (req, res) => {
    GraduationDocument.findById(req.params.graduationDocumentId, (err, data) => {
       if (err) {

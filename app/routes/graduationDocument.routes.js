@@ -10,6 +10,11 @@ module.exports = (app) => {
       graduationDocument.findOne
    );
 
+   app.get(
+      "/api/graduationSection/:sectionId",
+      graduationDocument.findBySectionId
+   );
+
    app.put("/api/graduationDocument/:id", graduationDocument.update);
 
    app.delete("/api/graduationDocument/:id", graduationDocument.delete);
