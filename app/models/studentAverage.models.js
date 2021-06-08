@@ -65,8 +65,8 @@ StudentAverage.findBySectionId = (sectionId, result) => {
          }
 
          if (res.length) {
-            console.log("found studentAverage: ", res[0]);
-            result(null, res[0]);
+            console.log("found studentAverage: ", res);
+            result(null, res);
             return;
          }
 
