@@ -97,7 +97,7 @@ Master.getAllByMasterId = (masterId, result) => {
 
 Master.getAll = (sectionId, result) => {
    sql.query(
-      `SELECT * FROM master JOIN masterType WHERE master.masterTypeId = masterType.idType AND master.sectionId = ${sectionId}`,
+      `SELECT * FROM master JOIN mastertype WHERE master.masterTypeId = mastertype.idType AND master.sectionId = ${sectionId}`,
       (err, res) => {
          if (err) {
             console.log("error: ", err);
