@@ -81,7 +81,7 @@ Master.getMasterClassByMasterId = (masterId, result) => {
 
 Master.getAllByMasterId = (masterId, result) => {
    sql.query(
-      `SELECT * FROM finalDegree JOIN lesson JOIN master on lesson.masterId = master.idMaster AND finalDegree.lessonId = lesson.idLesson WHERE master.idMaster = ${masterId} GROUP BY finalDegree.collageNumber ORDER BY finalDegree.studentName ASC`,
+      `SELECT * FROM finaldegree JOIN lesson JOIN master on lesson.masterId = master.idMaster AND finaldegree.lessonId = lesson.idLesson WHERE master.idMaster = ${masterId} GROUP BY finaldegree.collageNumber ORDER BY finaldegree.studentName ASC`,
       (err, res) => {
          if (err) {
             console.log("error: ", err);
@@ -113,7 +113,7 @@ Master.getAll = (sectionId, result) => {
 
 Master.getStudentMaster = (sqlQuery, result) => {
    sql.query(
-      `SELECT * FROM master JOIN lesson JOIN finalDegree ON lesson.masterId = master.idMaster AND lesson.idLesson = finalDegree.lessonId WHERE 1=1  ${sqlQuery} GROUP BY finalDegree.collageNumber`,
+      `SELECT * FROM master JOIN lesson JOIN finaldegree ON lesson.masterId = master.idMaster AND lesson.idLesson = finaldegree.lessonId WHERE 1=1  ${sqlQuery} GROUP BY finaldegree.collageNumber`,
       (err, res) => {
          if (err) {
             console.log("error: ", err);
@@ -175,7 +175,7 @@ Master.removeByMasterId = (id, result) => {
          return;
       } else {
          sql.query(
-            `DELETE FROM finalDegree WHERE lessonId in (${res.map((lesson) => [
+            `DELETE FROM finaldegree WHERE lessonId in (${res.map((lesson) => [
                lesson.idLesson,
             ])})`,
             (err, resFinal) => {
