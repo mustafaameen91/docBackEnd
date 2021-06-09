@@ -56,7 +56,7 @@ StudentAverage.createMultiAverage = (averages, result) => {
 
 StudentAverage.findBySectionId = (sectionId, result) => {
    sql.query(
-      `SELECT * FROM studentaverage WHERE sectionId = ${sectionId}`,
+      `SELECT * FROM studentaverage WHERE sectionId = ${sectionId} ORDER BY studentaverage.average  DESC`,
       (err, res) => {
          if (err) {
             console.log("error: ", err);
