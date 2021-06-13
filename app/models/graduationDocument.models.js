@@ -19,6 +19,7 @@ const GraduationDocument = function (graduationDocument) {
 };
 
 GraduationDocument.create = (newGraduationDocument, result) => {
+   console.log(newGraduationDocument);
    sql.query(
       "INSERT INTO graduationdocument SET ?",
       newGraduationDocument,
