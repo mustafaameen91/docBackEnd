@@ -7,6 +7,8 @@ exports.create = (req, res) => {
       });
    }
 
+   console.log(req.body);
+
    const graduationDocument = new GraduationDocument({
       studentName: req.body.studentName,
       studentNameEn: req.body.studentNameEn,
