@@ -10,6 +10,7 @@ const GraduationDocument = function (graduationDocument) {
    this.dob = graduationDocument.dob;
    this.averageWriting = graduationDocument.averageWriting;
    this.exception = graduationDocument.exception;
+   this.type = graduationDocument.type;
    this.enterYear = graduationDocument.enterYear;
    this.average = graduationDocument.average;
    this.sequence = graduationDocument.sequence;

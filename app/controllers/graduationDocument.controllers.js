@@ -19,6 +19,7 @@ exports.create = (req, res) => {
       dob: req.body.dob,
       averageWriting: req.body.averageWriting,
       exception: req.body.exception,
+      type: req.body.type,
       enterYear: req.body.enterYear,
       average: req.body.average,
       sequence: req.body.sequence,
