@@ -15,6 +15,8 @@ exports.create = (req, res) => {
       collegeId: req.body.collegeId,
       studentId: req.body.studentId,
       sectionId: req.body.sectionId,
+      sectionName: req.body.sectionName,
+      dob: req.body.dob,
       enterYear: req.body.enterYear,
       average: req.body.average,
       sequence: req.body.sequence,
