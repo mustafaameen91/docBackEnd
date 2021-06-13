@@ -17,6 +17,7 @@ exports.create = (req, res) => {
       sectionId: req.body.sectionId,
       sectionName: req.body.sectionName,
       dob: req.body.dob,
+      averageWriting: req.body.averageWriting,
       enterYear: req.body.enterYear,
       average: req.body.average,
       sequence: req.body.sequence,

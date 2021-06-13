@@ -8,6 +8,7 @@ const GraduationDocument = function (graduationDocument) {
    this.sectionId = graduationDocument.sectionId;
    this.sectionName = graduationDocument.sectionName;
    this.dob = graduationDocument.dob;
+   this.averageWriting = graduationDocument.averageWriting;
    this.enterYear = graduationDocument.enterYear;
    this.average = graduationDocument.average;
    this.sequence = graduationDocument.sequence;
@@ -19,7 +20,6 @@ const GraduationDocument = function (graduationDocument) {
 };
 
 GraduationDocument.create = (newGraduationDocument, result) => {
-   console.log(newGraduationDocument);
    sql.query(
       "INSERT INTO graduationdocument SET ?",
       newGraduationDocument,
