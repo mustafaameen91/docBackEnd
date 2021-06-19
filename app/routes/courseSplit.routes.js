@@ -3,7 +3,7 @@ module.exports = (app) => {
 
    app.post("/api/addCourseSplit", courseSplit.create);
 
-   app.get("/api/addMultiCourseSplit", courseSplit.createCourseLessons);
+   app.post("/api/addMultiCourseSplit", courseSplit.createCourseLessons);
 
    app.get("/api/courseSplits", courseSplit.findAll);
 
