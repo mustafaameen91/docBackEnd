@@ -57,7 +57,7 @@ Master.getMasterClassByMasterId = (masterId, result) => {
             console.log("found master: ", res[0]);
             // result(null, res[0]);
             sql.query(
-               `SELECT * FROM master JOIN masterClass ON masterClass.masterId = master.idMaster WHERE idMaster = ${masterId}`,
+               `SELECT * FROM master JOIN masterclass ON masterclass.masterId = master.idMaster WHERE idMaster = ${masterId}`,
                (err, resClass) => {
                   if (err) {
                      console.log("error: ", err);
@@ -190,7 +190,7 @@ Master.removeByMasterId = (id, result) => {
                } else {
                   console.log(resFinal);
                   sql.query(
-                     "DELETE FROM masterClass WHERE masterId = ?",
+                     "DELETE FROM masterclass WHERE masterId = ?",
                      id,
                      (err, res) => {
                         if (err) {
