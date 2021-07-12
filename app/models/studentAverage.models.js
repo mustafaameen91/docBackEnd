@@ -29,10 +29,10 @@ StudentAverage.create = (newStudentAverage, result) => {
 
 StudentAverage.createMultiAverage = (averages, result) => {
    sql.query(
-      "INSERT INTO studentaverage (collageNumber , average , sectionId , studyType) VALUES ? ",
+      "INSERT INTO studentaverage (collegeNumber , average , sectionId , studyType) VALUES ? ",
       [
          averages.map((degree) => [
-            degree.collageNumber,
+            degree.collegeNumber,
             degree.average,
             degree.sectionId,
             degree.studyType,
