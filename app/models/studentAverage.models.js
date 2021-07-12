@@ -32,10 +32,10 @@ StudentAverage.createMultiAverage = (averages, result) => {
       "INSERT INTO studentaverage (collageNumber , average , sectionId , studyType) VALUES ? ",
       [
          averages.map((degree) => [
-            averages.collageNumber,
-            averages.average,
-            averages.sectionId,
-            averages.studyType,
+            degree.collageNumber,
+            degree.average,
+            degree.sectionId,
+            degree.studyType,
          ]),
       ],
 
