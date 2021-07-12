@@ -96,10 +96,11 @@ Lessons.getAllByMasterId = (masterId, result) => {
       }
    );
 };
-
+//old query must check i dont know why dosnt work
+//SELECT  SUM(units)  total FROM lesson JOIN master ON master.idMaster = lesson.masterId WHERE master.level = ${level} AND sectionId = ${sectionId}SELECT  SUM(units)  total FROM lesson JOIN master ON master.idMaster = lesson.masterId WHERE master.level = ${level} AND sectionId = ${sectionId}
 Lessons.getAllByLevel = (level, sectionId, result) => {
    sql.query(
-      `SELECT  SUM(units)  total FROM lesson JOIN master ON master.idMaster = lesson.masterId WHERE master.level = ${level} AND sectionId = ${sectionId}SELECT  SUM(units)  total FROM lesson JOIN master ON master.idMaster = lesson.masterId WHERE master.level = ${level} AND sectionId = ${sectionId}`,
+      `SELECT  SUM(units)  total FROM lesson JOIN master ON master.idMaster = lesson.masterId WHERE master.level = ${level} AND sectionId = ${sectionId}`,
       (err, res) => {
          if (err) {
             console.log("error: ", err);

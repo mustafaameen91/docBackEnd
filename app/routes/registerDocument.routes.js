@@ -10,6 +10,8 @@ module.exports = (app) => {
       registerDocument.findBySectionId
    );
 
+   app.get("/api/test", registerDocument.getDocumentData);
+
    app.put("/api/registerDocument/:id", registerDocument.update);
 
    app.delete("/api/registerDocument/:id", registerDocument.delete);

@@ -1,4 +1,6 @@
 const RegisterDocument = require("../models/registerDocument.models.js");
+const fs = require("fs");
+const path = require("path");
 
 exports.create = (req, res) => {
    if (!req.body) {
@@ -38,6 +40,30 @@ exports.findAll = (req, res) => {
          });
       else res.send(data);
    });
+};
+
+exports.getDocumentData = (req, response) => {
+   var filePath = path.join(__dirname, "englishDocument.docx");
+   var stat = fs.statSync(filePath);
+
+   response.writeHead(200, {
+      "Content-Type":
+         "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+      "Content-Length": stat.size,
+   });
+
+   var readStream = fs.createReadStream(filePath);
+   // We replaced all the event handlers with a simple call to readStream.pipe()
+   readStream.pipe(response);
+   // RegisterDocument.getAll((err, data) => {
+   //    if (err)
+   //       res.status(500).send({
+   //          message:
+   //             err.message ||
+   //             "Some error occurred while retrieving RegisterDocument.",
+   //       });
+   //    else res.send(data);
+   // });
 };
 
 exports.findOne = (req, res) => {
