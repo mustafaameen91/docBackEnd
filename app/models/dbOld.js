@@ -6,7 +6,8 @@ const oldConnection = mysql.createConnection({
    //    password: "Aa123123!@",
    host: "localhost",
    user: "root",
-   password: "vA47u2Byx5LmbjDj",
+   // password: "vA47u2Byx5LmbjDj",
+   password: "Hh123123!@",
    database: "portal",
    port: 3306,
 });
