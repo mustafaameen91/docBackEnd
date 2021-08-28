@@ -6,7 +6,8 @@ module.exports = {
    // PASSWORD: "Aa123123!@",
    HOST: "localhost",
    USER: "root",
-   PASSWORD: "vA47u2Byx5LmbjDj",
+   PASSWORD: "Hh123123!@",
+   //PASSWORD: "vA47u2Byx5LmbjDj",
    DB: "documents",
    PORT: 3306,
 };
